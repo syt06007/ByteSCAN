@@ -50,39 +50,21 @@ pip install -r requirements.txt
     │   │   ├── val_4096.npz
   ```
 
-## Experiment Settings
+## Parser Options
 
-This project provides predefined settings that can be used to reproduce the results presented in the paper. Each setting is labeled as `set_num_1`, `set_num_2`, etc., and corresponds to specific configurations used during different experiments.
+This project includes a parser with predefined options to facilitate the reproduction of results presented in the paper. 
 
-#### set_num_1 (Train/Test)
-This setting is the default configuration. It uses the **FFT75 dataset**, employs a **pretrained backbone (FFT75)**, and trains the **attention layer**.
-
-#### set_num_2 (Train/Test)
-This setting is the default configuration. It uses the **GovDocs dataset**, employs a **pretrained backbone (govdocs)**, and trains the **attention layer**.
-
-#### set_num_3 (Only Test)
-This setting is used for **Ablation experiments**. It uses a **pretrained model on 4096-byte data** and performs predictions on datasets of **various sizes (512, 1024, 2048)**
-
-#### set_num_4 (Only Test)
-This setting is used for **Ablation experiments**. It uses a **pretrained backbone** and performs predictions using soft voting.
-
-#### set_num_5 (Train/Test)
-This setting is used for **Ablation experiments**. It trains the attention layer using a backbone **pretrained with data fixed-cropped from a single position** instead of the backbone pretrained with randomly cropped data from 4096-byte data.
-
-#### set_num_6 (Train/Test)
-This setting is used for **Ablation experiments**. It does not perform overlapping between segments (512 byte).
-
-#### set_num_7 (Train/Test)
-This setting is used for **Ablation experiments**. It does not perform overlapping between segments (256 byte).
+- The `--settings` option allows you to choose from various configurations, such as `set_num_1`, `set_num_2`, etc., each corresponding to a specific experiment setup.
+- The `--block_size` option lets you specify the size of data segments, with available options being `512`, `1024`, `2048`, and `4096`.
 
 
 ## Train/Test:
 ```
-python main.py --settings=set_num_1
+python main.py --settings=set_num_1 --block_size=4096
 ```
 
 ```
-python test.py --settings=set_num_1
+python test.py --settings=set_num_1 --block_size=4096
 ```
 * Checkpoint will be saved to `./ckpt/fft(or govdocs)/`.
 
