@@ -108,7 +108,7 @@ def set_loader(args):
         # models
         cnn_backbone = parse_model_from_name(args.model, 75).to(args.device)
         cnn_backbone = load_pretrained_model('ckpt/backbone/FFT75_RandomCrop_ResNet18.pth', cnn_backbone, args.device)
-        model = AttentionBasedPatchClassifier(args, 512, 75).to(args.device)
+        model = None
         # model_ckpt = torch.load(checkpoint_path, map_location=device)
         data_type='fft'
 
@@ -148,6 +148,22 @@ def set_loader(args):
 
         return valid_loader, cnn_backbone, model
 
+    elif args.settings == 'set_num_7':
+        '''<Test> ablation w/o overlapping patch (kernel_size==512 or 256 byte) (1024, 2048, 4096 data)'''
+
+        # trainer
+        from trainer import test as valid
+        # dataset
+        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='val', kernel_size=256, overlap=False)
+        valid_loader = torch.utils.data.DataLoader(valid_data, shuffle=False, batch_size=args.batch_size)
+        # models
+        cnn_backbone = parse_model_from_name(args.model, 75).to(args.device)
+        cnn_backbone = load_pretrained_model('ckpt/backbone/.pth', cnn_backbone, args.device)
+        model = AttentionBasedPatchClassifier(args, 512, 75).to(args.device)
+        model_ckpt = torch.load(checkpoint_path, map_location=device)
+        data_type='fft'
+
+        return valid_loader, cnn_backbone, model
 
 
 def main():
