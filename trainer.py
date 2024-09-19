@@ -180,3 +180,56 @@ def test_var_size(cfg, valid_loader, feature_extractor, transformer):
     print('====== dataset accuracies ======')
     print(f'512 : {acc_list[0].avg}, 1024 : {acc_list[1].avg}, 2048 : {acc_list[2].avg}')
 
+
+
+def backbone_train(cfg, train_loader, model, criterion, optimizer):
+    model.train()
+
+    losses = AverageMeter()
+
+    pbar = tqdm(train_loader)
+    for idx, (data, label) in enumerate(pbar):
+        data, label = data.type(torch.LongTensor).to(cfg.device), label.long().to(cfg.device)
+
+        # Forward
+        logits, _ = model(data)
+        
+        loss = criterion(logits, label) # cross_entropy loss
+
+        # Update metric
+        losses.update(loss.item(), label.size(0))
+
+        # Backward
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        pbar.set_postfix(loss=losses.avg)
+
+
+    return losses.avg
+
+def backbone_valid(cfg, valid_loader, model, scheduler, early_stopper):
+    model.eval() 
+    losses = AverageMeter()
+    accuracies = AverageMeter()
+    
+    criterion = nn.CrossEntropyLoss()
+    with torch.no_grad():
+        for idx, (data, label) in enumerate(tqdm(valid_loader)):
+            data, label = data.type(torch.LongTensor).to(cfg.device), label.long().to(cfg.device)
+            output, _ = model(data)
+            loss = criterion(output, label)
+
+            # Compute acc
+            _, pred_label = torch.max(output, 1)
+            acc = accuracy_score(label.cpu().numpy(), pred_label.cpu().numpy())
+
+            # Update metric
+            losses.update(loss.item(), label.size(0))
+            accuracies.update(acc, label.size(0))
+
+    # callbacks
+    scheduler.step(losses.avg)
+    early_stopper(losses.avg)
+
+    return losses.avg, accuracies.avg

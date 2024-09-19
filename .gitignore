@@ -5,11 +5,11 @@ dataset/govdocs/*
 !dataset/govdocs/.gitkeep
 
 ckpt/backbone/*
+ckpt/fft/*
+ckpt/govdocs/*
 
 !ckpt/backbone/.gitkeep
-
 !ckpt/fft/.gitkeep
-
 !ckpt/govdocs/.gitkeep
 
 __pycache__/

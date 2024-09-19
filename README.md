@@ -2,7 +2,7 @@
 <br>
 <p align="center"> <img src="https://github.com/syt06007/ByteSCAN/blob/main/images/ByteSCAN.png" width="100%"> </p>
 
-***PyTorch implementation of our paper "Pushing the Limit in File Fragment Classification: Leveraging Deep Convolutional Features and Shallow Self-Attention on Fixed-Byte Segments". [ICASS 2025 Under Review]***<br>
+***PyTorch implementation of our paper "Pushing the Limit in File Fragment Classification: Leveraging Deep Convolutional Features and Shallow Self-Attention on Fixed-Byte Segments". [ICASSP 2025 Under Review]***<br>
 
 ## News and Updates:
 * 2024-09-20: Codes and models are uploaded.
