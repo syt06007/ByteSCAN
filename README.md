@@ -78,12 +78,12 @@ python models/transformer.py
 ## Results:
 
 ### Performance on Datasets:
-<p align="center"> <img src="https://github.com/syt06007/ByteSCAN/blob/main/images/results.png" width="95%"> </p>
+<p align="center"> <img src="https://github.com/syt06007/ByteSCAN/blob/main/images/results.png" width="100%"> </p>
 
 
-## Citiation
+<!-- ## Citiation
 **If you find this work helpful, please consider citing:**
-<!-- ```
+```
 @InProceedings{,
     author    = {},
     title     = {},
@@ -92,8 +92,11 @@ python models/transformer.py
     year      = {},
     pages     = {}
 }
-``` -->
-<br>
+```
+<br> -->
+
+## License
+A patent application for ByteSCAN has been submitted and is under review for registration. ByteSCAN is licensed under the CC-BY-NC-SA-4.0 license limiting any commercial use.
 
 ## Contact
 **Welcome to email to [khs06007@hanyang.ac.kr](khs06007@hanyang.ac.kr) for any question regarding this work.**
