@@ -32,7 +32,7 @@ def parse_args():
     parser.add_argument('--embed_dim', type=int, default=1024)
     parser.add_argument('--save', type=bool, default=True, help='Flag to save the model weights')
     parser.add_argument("--model", type=str, default='euclidean_without_avgpool', choices= ["euclidean", "euclidean_without_avgpool", "euclidean_masking"], help="Model name")
-    parser.add_argument("--settings", type=str, default='set_num_1', choices=['set_num_1', 'set_num_2', 'set_num_5', 'set_num_6', 'set_num_7'], help="Select settings")
+    parser.add_argument("--settings", type=str, default='set_num_2', choices=['set_num_1', 'set_num_2', 'set_num_5', 'set_num_6', 'set_num_7'], help="Select settings")
 
     return parser.parse_args()
 
