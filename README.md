@@ -35,13 +35,14 @@ This section explains how to train the **ResNet18-1D Backbone**. The training pr
 
 To train the backbone with one of these options, run the following command:
 
-```bash
+```
 python backbone_pretrain.py --settings=fft_RandomCrop
+```
 
 
-<br/>
+If everything is prepared, you will have the following directory structure.
 
-If everything is prepared, you will have the following data structure
+
 
 ### Path structure:
   ```
