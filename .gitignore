@@ -1,7 +1,17 @@
-dataset/
+dataset/fft/*
+!dataset/fft.gitkeep
+
+dataset/govdocs/*
+!dataset/govdocs.gitkeep
+
+ckpt/backbone/*
+
+!ckpt/backbone.gitkeep
+
+!ckpt/fft.gitkeep
+
+!ckpt/govdocs.gitkeep
 
 __pycache__/
 
 models/__pycache__/
-
-ckpt/
