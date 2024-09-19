@@ -8,14 +8,40 @@
 * 2024-09-20: Codes and models are uploaded.
 
 ## Preparation:
-### Requirement:
+### 1. Requirement:
 * PyTorch 2.2.1, torchvision 0.17.1. The code is tested with python=3.10, cuda=12.2
 
 ```
 pip install -r requirements.txt
 ```
 
-### Datasets:
+### 2. Datasets:
+To use the [FFT75](https://ieee-dataport.org/open-access/file-fragment-type-fft-75-dataset) dataset for training and validation, follow these steps:
+
+1. Download the **4k_1** data from the **FFT75** dataset.
+2. Rename the downloaded files:
+   - Rename `train.npz` to `train_4096.npz`
+   - Rename `val.npz` to `val_4096.npz`
+3. Place the renamed files in the following directory:
+   - `dataset/fft/`
+4. Run the data split script to organize the dataset into the desired structure. Adjust the arguments in `data_split.py` as needed to ensure the files are split and organized according to the following path structure:
+
+### 3. Backbone Pretraining:
+This section explains how to train the **ResNet18-1D Backbone**. The training process allows you to select one of three options for pretraining using the parser. You can choose between the following settings:
+
+- `fft_RandomCrop`
+- `fft_FixedCrop`
+- `govdocs_RandomCrop`
+
+To train the backbone with one of these options, run the following command:
+
+```bash
+python backbone_pretrain.py --settings=fft_RandomCrop
+
+
+<br/>
+
+If everything is prepared, you will have the following data structure
 
 ### Path structure:
   ```
