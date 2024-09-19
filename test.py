@@ -26,7 +26,8 @@ def parse_args():
     parser.add_argument('--embed_dim', type=int, default=1024)
     parser.add_argument('--save', type=bool, default=True, help='Flag to save the model weights')
     parser.add_argument("--model", type=str, default='euclidean_without_avgpool', choices= ["euclidean", "euclidean_without_avgpool", "euclidean_masking"], help="Model name")
-    parser.add_argument("--settings", type=str, default='set_num_4', choices=["set_num_1, set_num_2, set_num_3, set_num_4, set_num_5, set_num_6, set_num_7"], help="Dataset (fifty)")
+    parser.add_argument("--settings", type=str, default='set_num_4', choices=['set_num_1', 'set_num_2', 'set_num_3', 'set_num_4', 'set_num_5', 'set_num_6', 'set_num_7'], help="Dataset (fifty)")
+    parser.add_argument("--block_size", type=str, default='4096', choices=['4096', '2048', '1024', '512'], help="Choice dataset size")
     return parser.parse_args()
 
 
@@ -109,7 +110,6 @@ def set_loader(args):
         cnn_backbone = parse_model_from_name(args.model, 75).to(args.device)
         cnn_backbone = load_pretrained_model('ckpt/backbone/FFT75_RandomCrop_ResNet18.pth', cnn_backbone, args.device)
         model = None
-        # model_ckpt = torch.load(checkpoint_path, map_location=device)
         data_type='fft'
 
         return valid_loader, cnn_backbone, model

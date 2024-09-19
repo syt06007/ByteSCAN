@@ -33,6 +33,7 @@ def parse_args():
     parser.add_argument('--save', type=bool, default=True, help='Flag to save the model weights')
     parser.add_argument("--model", type=str, default='euclidean_without_avgpool', choices= ["euclidean", "euclidean_without_avgpool", "euclidean_masking"], help="Model name")
     parser.add_argument("--settings", type=str, default='set_num_2', choices=['set_num_1', 'set_num_2', 'set_num_5', 'set_num_6', 'set_num_7'], help="Select settings")
+    parser.add_argument("--block_size", type=str, default='4096', choices=['4096', '2048', '1024', '512'], help="Choice dataset size")
 
     return parser.parse_args()
 
@@ -61,8 +62,8 @@ def set_loader(args):
         from trainer import train as train
         from trainer import valid as valid
         # dataset
-        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='train', kernel_size=512, overlap=True)
-        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='val', kernel_size=512, overlap=True)
+        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='train', kernel_size=512, overlap=True)
+        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='val', kernel_size=512, overlap=True)
         train_loader = torch.utils.data.DataLoader(train_data, shuffle=True, batch_size=args.batch_size)
         valid_loader = torch.utils.data.DataLoader(valid_data, shuffle=False, batch_size=args.batch_size)
         # models
@@ -80,8 +81,8 @@ def set_loader(args):
         from trainer import train as train
         from trainer import valid as valid
         # dataset
-        train_data = dataset.SCAN_Dataset(dataset_type='govdocs', block_size='4096', mode='train', kernel_size=512, overlap=True)
-        valid_data = dataset.SCAN_Dataset(dataset_type='govdocs', block_size='4096', mode='val', kernel_size=512, overlap=True)
+        train_data = dataset.SCAN_Dataset(dataset_type='govdocs', block_size=args.block_size, mode='train', kernel_size=512, overlap=True)
+        valid_data = dataset.SCAN_Dataset(dataset_type='govdocs', block_size=args.block_size, mode='val', kernel_size=512, overlap=True)
         train_loader = torch.utils.data.DataLoader(train_data, shuffle=True, batch_size=args.batch_size)
         valid_loader = torch.utils.data.DataLoader(valid_data, shuffle=False, batch_size=args.batch_size)
         # models
@@ -99,8 +100,8 @@ def set_loader(args):
         from trainer import train as train
         from trainer import valid as valid
         # dataset
-        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='train', kernel_size=512, overlap=True)
-        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='val', kernel_size=512, overlap=True)
+        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='train', kernel_size=512, overlap=True)
+        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='val', kernel_size=512, overlap=True)
         train_loader = torch.utils.data.DataLoader(train_data, shuffle=True, batch_size=args.batch_size)
         valid_loader = torch.utils.data.DataLoader(valid_data, shuffle=False, batch_size=args.batch_size)
         # models
@@ -112,14 +113,14 @@ def set_loader(args):
         return train_loader, valid_loader, cnn_backbone, model
 
     elif args.settings == 'set_num_6':
-        '''<Test> ablation w/o overlapping patch (kernel_size == 512 byte) (1024, 2048, 4096 data)'''
+        '''<Train> ablation w/o overlapping patch (kernel_size == 512 byte) (1024, 2048, 4096 data)'''
 
         # trainer
         from trainer import train as train
         from trainer import valid as valid
         # dataset
-        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='train', kernel_size=512, overlap=False)
-        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='val', kernel_size=512, overlap=False)
+        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='train', kernel_size=512, overlap=False)
+        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='val', kernel_size=512, overlap=False)
         train_loader = torch.utils.data.DataLoader(train_data, shuffle=True, batch_size=args.batch_size)
         valid_loader = torch.utils.data.DataLoader(valid_data, shuffle=False, batch_size=args.batch_size)
         # models
@@ -131,14 +132,14 @@ def set_loader(args):
         return train_loader, valid_loader, cnn_backbone, model
 
     elif args.settings == 'set_num_7':
-        '''<Test> ablation w/o overlapping patch (kernel_size == 256 byte) (1024, 2048, 4096 data)'''
+        '''<Train> ablation w/o overlapping patch (kernel_size == 256 byte) (1024, 2048, 4096 data)'''
 
         # trainer
         from trainer import train as train
         from trainer import valid as valid
         # dataset
-        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='train', kernel_size=256, overlap=False)
-        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size='4096', mode='val', kernel_size=256, overlap=False)
+        train_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='train', kernel_size=256, overlap=False)
+        valid_data = dataset.SCAN_Dataset(dataset_type='fft', block_size=args.block_size, mode='val', kernel_size=256, overlap=False)
         train_loader = torch.utils.data.DataLoader(train_data, shuffle=True, batch_size=args.batch_size)
         valid_loader = torch.utils.data.DataLoader(valid_data, shuffle=False, batch_size=args.batch_size)
         # models

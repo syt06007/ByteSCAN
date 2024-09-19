@@ -95,8 +95,12 @@ python models/transformer.py
 ```
 <br> -->
 
-## License
-A patent application for ByteSCAN has been submitted and is under review for registration. ByteSCAN is licensed under the CC-BY-NC-SA-4.0 license limiting any commercial use.
 
 ## Contact
 **Welcome to email to [khs06007@hanyang.ac.kr](khs06007@hanyang.ac.kr) for any question regarding this work.**
+
+## Reference
+* The implementation of other models referenced in this paper can be found in **[XMP_TIFS(https://github.com/DominicoRyu/XMP_TIFS)]**.
+
+## License
+A patent application for ByteSCAN has been submitted and is under review for registration. ByteSCAN is licensed under the CC-BY-NC-SA-4.0 license limiting any commercial use.
