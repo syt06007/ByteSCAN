@@ -124,7 +124,7 @@ python models/transformer.py
 
 
 ## Contact
-**Welcome to email to [khs06007@hanyang.ac.kr](khs06007@hanyang.ac.kr), [liuss98@hanyang.ac.kr](liuss98@hanyang.ac.kr) for any question regarding this work.**
+**Welcome to email to [[khs06007@hanyang.ac.kr](khs06007@hanyang.ac.kr)], [[liuss98@hanyang.ac.kr](liuss98@hanyang.ac.kr)] for any question regarding this work.**
 
 ## Reference
 * The implementation of other models referenced in this paper can be found in **[[XMP_TIFS](https://github.com/DominicoRyu/XMP_TIFS)]**.
