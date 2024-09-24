@@ -31,6 +31,7 @@ def parse_args():
     parser.add_argument('--embed_dim', type=int, default=1024)
     parser.add_argument('--save', type=bool, default=True, help='Flag to save the model weights')
     parser.add_argument("--model", type=str, default='euclidean_without_avgpool', choices= ["euclidean", "euclidean_without_avgpool", "euclidean_masking"], help="Model name")
+    
     parser.add_argument("--settings", type=str, default='fft_RandomCrop', choices=['fft_RandomCrop', 'fft_FixedCrop', 'govdocs_RandomCrop'], help="Select settings")
 
     return parser.parse_args()

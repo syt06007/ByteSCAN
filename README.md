@@ -1,4 +1,4 @@
-# ICASSP2025_ByteSCAN
+# ByteSCAN
 <br>
 <p align="center"> <img src="https://github.com/syt06007/ByteSCAN/blob/main/images/ByteSCAN.png" width="100%"> </p>
 
