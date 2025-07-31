@@ -4,9 +4,6 @@
 
 ***PyTorch implementation of our paper "Pushing the Limit in File Fragment Classification: Leveraging Deep Convolutional Features and Shallow Self-Attention on Fixed-Byte Segments".***<br>
 
-## News and Updates:
-* 2024-09-20: Codes and models are uploaded.
-
 ## Preparation:
 ### 1. Requirement:
 * PyTorch 2.2.1, torchvision 0.17.1. The code is tested with python=3.10, cuda=12.2
@@ -124,7 +121,6 @@ python models/transformer.py
 
 
 ## Contact
-**Welcome to email to [[khs06007@hanyang.ac.kr](khs06007@hanyang.ac.kr)], [[liuss98@hanyang.ac.kr](liuss98@hanyang.ac.kr)] for any question regarding this work.**
 
 ## Reference
 * The implementation of other models referenced in this paper can be found in **[[XMP_TIFS](https://github.com/DominicoRyu/XMP_TIFS)]**.
