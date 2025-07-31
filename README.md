@@ -2,8 +2,6 @@
 <br>
 <p align="center"> <img src="https://github.com/syt06007/ByteSCAN/blob/main/images/ByteSCAN.png" width="100%"> </p>
 
-***PyTorch implementation of our paper "Pushing the Limit in File Fragment Classification: Leveraging Deep Convolutional Features and Shallow Self-Attention on Fixed-Byte Segments".***<br>
-
 ## Preparation:
 ### 1. Requirement:
 * PyTorch 2.2.1, torchvision 0.17.1. The code is tested with python=3.10, cuda=12.2
